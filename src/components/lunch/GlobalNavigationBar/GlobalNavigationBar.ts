@@ -1,25 +1,27 @@
 import "./GlobalNavigationBar.css";
 
-import BaseComponent from "../BaseComponent/BaseComponent";
-import addButton from "../../assets/images/add-button.png";
-import { $ } from "../../utils/dom";
-import { ELEMENT_SELECTOR } from "../../constants/selector";
-import { CustomEventListenerDictionary } from "../BaseComponent/BaseComponent.type";
+import addButton from "../../../assets/images/add-button.png";
+
+import BaseComponent from "../../BaseComponent/BaseComponent";
+
+import { $ } from "../../../utils/dom";
+
+import { ELEMENT_SELECTOR } from "../../../constants/selector";
 
 class GlobalNavigationBar extends BaseComponent {
-  private eventListeners: CustomEventListenerDictionary = {
+  private eventListeners = {
     gnbButtonClick: {
       eventName: "click",
       eventHandler: this.handleOpenModal,
     },
-  };
+  } as const;
 
   protected render() {
     this.innerHTML = `
         <header class="gnb">
             <h1 class="gnb__title text-title">점심 뭐 먹지</h1>
             <button id="gnb-button" type="button" class="gnb__button" aria-label="음식점 추가">
-            <img src=${addButton} alt="음식점 추가">
+              <img src=${addButton} alt="음식점 추가">
             </button>
         </header>
         `;
@@ -33,7 +35,11 @@ class GlobalNavigationBar extends BaseComponent {
   }
 
   private handleOpenModal() {
-    $(ELEMENT_SELECTOR.restaurantAddModal).classList.add("modal--open");
+    const modalContent = $(ELEMENT_SELECTOR.commonModalContent);
+
+    if (modalContent instanceof HTMLDialogElement) {
+      modalContent.showModal();
+    }
   }
 
   protected removeEvent(): void {

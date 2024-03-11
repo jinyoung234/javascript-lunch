@@ -1,11 +1,12 @@
 import "../src/styles/index.css";
 import "../src/styles/reset.css";
 
-import "./components/LunchApp/LunchApp";
-import "./components/GlobalNavigationBar/GlobalNavigationBar";
-import "./components/CategoryDropdown/CategoryDropdown";
-import "./components/SortDropdown/SortDropdown";
-import "./components/RestaurantList/RestaurantList";
-import "./components/RestaurantItem/RestaurantItem";
-import "./components/RestaurantAddModal/RestaurantAddModal";
-import "./components/RestaurantAddForm/RestaurantAddForm";
+import "./components/lunch/LunchApp/LunchApp";
+import "./components/lunch/GlobalNavigationBar/GlobalNavigationBar";
+import "./components/lunch/RestaurantList/RestaurantList";
+import "./components/lunch/RestaurantItem/RestaurantItem";
+import "./components/lunch/RestaurantAddForm/RestaurantAddForm";
+
+import "./components/common/CommonDropdown/CommonDropdown";
+import "./components/common/CommonModal/CommonModal";
+import "./components/common/CommonFormItem/CommonFormItem";
