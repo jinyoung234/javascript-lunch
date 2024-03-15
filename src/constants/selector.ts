@@ -1,8 +1,10 @@
 export const ELEMENT_SELECTOR = {
   categoryFilter: "#category-filter",
   gnbButton: "#gnb-button",
-  commonModalContent: "#restaurant-add-modal>#common-modal-dialog",
+  restaurantAddModal: "#restaurant-add-modal",
+  restaurantDetailModal: "#restaurant-detail-modal",
   modalCancelButton: "#modal-cancel-button",
+  modalDeleteButton: "#modal-delete-button",
   restaurantAddForm: "#restaurant-add-form",
   sortingFilter: "#sorting-filter",
   distanceSelect: "#distance-select>select",
