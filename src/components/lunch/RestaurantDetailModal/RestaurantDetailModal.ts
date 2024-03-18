@@ -24,31 +24,36 @@ class RestaurantDetailModal extends BaseComponent {
     },
   } as const;
 
-  protected render(): void {
-    this.innerHTML = `
+  protected render() {
+    this.innerHTML = /* html */ `
       <common-modal
         open="${CUSTOM_EVENT_TYPE.restaurantDetailModalOpen}"
         close="${CUSTOM_EVENT_TYPE.restaurantDetailModalClose}"
         targetSelector="${ELEMENT_SELECTOR.restaurantDetailModal}"  
         id="restaurant-detail-modal"
       >
-        ${
-          this.restaurantDetail
-            ? `<restaurant-detail-modal-content 
-                name='${this.restaurantDetail.name}'
-                category='${this.restaurantDetail.category}'
-                description='${this.restaurantDetail.description}'
-                distance='${this.restaurantDetail.distance}'
-                isFavorite='${this.restaurantDetail.isFavorite}'
-                url='${this.restaurantDetail.url}'
-              ></restaurant-detail-modal-content>`
-            : ""
-        }
+        ${this.renderRestaurantDetailContent()}
       </common-modal>
     `;
   }
 
-  protected setEvent(): void {
+  private renderRestaurantDetailContent() {
+    if (!this.restaurantDetail) {
+      return "";
+    }
+
+    return /* html */ `
+      <restaurant-detail-modal-content 
+        name='${this.restaurantDetail.name}'
+        category='${this.restaurantDetail.category}'
+        description='${this.restaurantDetail.description}'
+        distance='${this.restaurantDetail.distance}'
+        isFavorite='${this.restaurantDetail.isFavorite}'
+        url='${this.restaurantDetail.url}'
+      ></restaurant-detail-modal-content>`;
+  }
+
+  protected setEvent() {
     this.on({
       ...this.eventListeners.restaurantDetailModalOpen,
       target: document,
@@ -79,7 +84,7 @@ class RestaurantDetailModal extends BaseComponent {
     }
   }
 
-  protected removeEvent(): void {
+  protected removeEvent() {
     this.off({
       ...this.eventListeners.restaurantDetailModalOpen,
       target: document,
